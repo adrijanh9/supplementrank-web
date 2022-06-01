@@ -1,23 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import Products from './components/Products';
+import Navbar from './components/Navbar';
+import SortSelect from './components/SortSelect'
+import { Grid } from '@mui/material';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar/>
+
+      <Grid container sx={{marginTop: 2}}>
+
+        <Grid item xs={2}>
+          <SortSelect/>
+        </Grid>
+
+        <Grid item xs={10}>
+          <Products/>
+        </Grid>
+
+
+      </Grid>
+      
     </div>
   );
 }
