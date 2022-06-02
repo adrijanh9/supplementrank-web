@@ -29,38 +29,81 @@ function Products() {
 
     const [data, setData] = React.useState([])
 
+    let data1 = [],data2 = [];
+
     useEffect(() => {
         axios
           .get(api_url + "products")
           .then((res) => {
-            setData(res.data)
-          })
+                setData(res.data)
+                
+
+            }
+          )
     })
 
 
+    for(let i=0;i<data.length;i++){
 
-    if(data.length > 0) {
+        if((i+1)%2==0){
+            data2.push(data[i])
+        }else{
+            data1.push(data[i])
+        }
+    }
+
+    
+
+
+    let dataIsLoaded = data.length > 0 ? true : false;
+
+
+    if(dataIsLoaded) {
 
         return (
 
-            <Stack sx={{marginLeft: 2, marginRight: 2}} spacing={1}> 
-    
-                {data.map((item) =>
-    
-                    <Item >
-                        
-                        
-                        <Product {...item}></Product>
+            <Grid container spacing={2}>
+                
+                <Grid item xs={6}>
 
-    
-                    </Item>
+                    <Stack spacing={2} >
+                        {
+                            data1.map((item) => 
                             
-                )}
-    
-            </Stack>
+                                <Item sx={{maxHeight: 175, minHeight: 175}}>
+                                    <Product {...item}></Product>
+                                </Item>
 
-    
+                            )
+
+                        }
+                    </Stack>
+
+                </Grid>
+
+                <Grid item xs={6}>
+
+                    <Stack spacing={2}>
+                            {
+                                data2.map((item) => 
+                                
+                                    <Item sx={{maxHeight: 175, minHeight: 175}}>
+                                        <Product {...item}></Product>
+                                    </Item>
+
+                                )
+
+                            }
+                    </Stack>
+
+
+                </Grid>
+            
+            </Grid>
+
+
         )
+                
     }
     else {
         return <h3>Loading..</h3>
@@ -69,4 +112,3 @@ function Products() {
 }
 
 export default Products
-

@@ -9,18 +9,18 @@ function Product({name, price, image, link, discount}){
 
         <Grid container>
 
-            <Grid item xs={3}>
+            <Grid item xs={4} sx={{display: "flex", justifyContent: "center"}}>
                 
                 <Box 
                     component="img" 
-                    sx={{ width: 0.5}}
+                    sx={{ width: 0.8, height: "auto"}}
                     alt="N/A"
                     src={image}
                 />
 
             </Grid>
 
-            <Grid item xs={9}>
+            <Grid item xs={8}>
 
                 <h2>{name}</h2>
 
