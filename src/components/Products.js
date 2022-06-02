@@ -8,6 +8,7 @@ import { Grid } from '@mui/material';
 import Button from '@mui/material/Button';
 import { useEffect } from 'react';
 import axios from 'axios';
+import Product from './Product'
 
 import SortSelect from './SortSelect';
 
@@ -48,43 +49,16 @@ function Products() {
     
                     <Item >
                         
-                        <Grid container>
-                            <Grid item xs={3}>
-                                <Box
-                                    component="img"
-                                    sx={{
-                                        width: 0.5
-                                        
-                                    }}
-                                    alt="N/A"
-                                    src={item.image}
-                                />
+                        
+                        <Product {...item}></Product>
 
-                            </Grid>
-    
-                            <Grid item xs={9}>
-                                <h2>{item.name}</h2>
-
-                                {item.discount != 0 ?    
-                                    <h3>{item.price} <span style={{color: "red"}}> -{item.discount}</span></h3>:
-                                    <h3>{item.price}</h3>
-
-                                }
-                                <Button target="_blank" component="a" href={item.link} variant="contained">Buy</Button>
-                            </Grid>
-    
-    
-                        </Grid>
-    
     
                     </Item>
                             
                 )}
     
             </Stack>
-                
-    
-                
+
     
         )
     }
@@ -95,3 +69,4 @@ function Products() {
 }
 
 export default Products
+
